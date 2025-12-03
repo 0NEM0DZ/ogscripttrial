@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OG Script</title>
+  <style>
+    :root {
+      --p1: #4f46e5;
+      --p2: #9333ea;
+      --bg: linear-gradient(135deg, #4f46e5, #9333ea);
+      --card-bg: #fff;
+      --muted: #6b7280;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      margin: 0;
+      padding: 20px;
+      color: #222;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 920px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+      animation: fadeIn .5s ease;
+    }
+
+    h1 { text-align: center; color: var(--p1); margin: 0 0 18px 0; }
+    h2 { color: var(--p1); font-size: 18px; margin: 10px 0; }
+
+    .top-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .segmented {
+      display: inline-flex;
+      gap: 6px;
+      background: rgba(0, 0, 0, 0.04);
+      padding: 6px;
+      border-radius: 999px;
+      flex-wrap: wrap;
+    }
+
+    .segmented button {
+      border: none;
+      padding: 8px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+      background: transparent;
+      color: var(--muted);
+      transition: all .12s ease;
+    }
+
+    .segmented button.active {
+      color: #fff;
+      background: linear-gradient(90deg, var(--p1), var(--p2));
+      box-shadow: 0 8px 20px rgba(79, 70, 229, 0.16);
+      transform: translateY(-2px);
+    }
+
+    .card {
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 18px;
+      border: 1px solid #e5e7eb;
+      animation: fadeIn .5s ease;
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .option {
+      background: #fff;
+      border-radius: 10px;
+      padding: 12px;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 110px;
+    }
+
+    .option h3 { margin: 0; color: #111; font-size: 15px; }
+    .option p { margin: 6px 0 0 0; color: var(--muted); font-size: 13px; }
+
+    .button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--p1), var(--p2));
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(79, 70, 229, 0.14);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: #111;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .btn-disabled {
+      background: transparent;
+      color: var(--muted);
+      border: 1px dashed rgba(0, 0, 0, 0.06);
+      cursor: not-allowed;
+    }
+
+    .muted-note { color: var(--muted); font-size: 13px; margin-top: 12px; }
+    .hidden { display: none !important; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width:520px) {
+      .top-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .options { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>OG Script Trial</h1>
+
+    <div class="top-row">
+      <div class="segmented" role="tablist" aria-label="Escolha plataforma">
+        <button id="btn-mobile" class="seg-btn" type="button" role="tab">📱 Mobile</button>
+        <button id="btn-pc" class="seg-btn" type="button" role="tab">💻 PC</button>
+        <button id="btn-ajuda" class="seg-btn" type="button" role="tab">❓ Ajuda</button>
+      </div>
+      <div style="flex:1"></div>
+      <div style="font-size:13px; color:#6b7280;">💡 Dica: Veja o tutorial primeiro e depois faca a instalacao.</div>
+    </div>
+
+    <div class="card">
+      <!-- MOBILE -->
+      <div id="mobile-area" class="options hidden" aria-hidden="true">
+        <div class="option">
+          <h3>Tutorial de Instalação</h3>
+          <p>Assista o passo-a-passo para instalar corretamente.</p>
+          <a class="button btn-primary" href="https://youtu.be/9wTasp4nD9o?si=MtA42DoERxf80GyX" target="_blank">Ver Tutorial</a>
+        </div>
+
+        <div class="option">
+          <h3>Bypass Clonador</h3>
+          <p>Obrigatório instalar para evitar erros.</p>
+          <a class="button btn-primary" href="BypassClonador.apk" download>Baixar Bypass</a>
+        </div>
+
+        <div class="option">
+          <h3>Clonador (Matrix)</h3>
+          <p>Se não conseguir instalar, desative o Google Play Protect.</p>
+          <a class="button btn-primary" href="Matrix.apk" download>Baixar Clonador</a>
+        </div>
+
+        <div class="option">
+          <h3>OG (APK)</h3>
+          <p>Nosso próprio executor do mod.</p>
+          <a class="button btn-primary" href="OG Script.apk" download>Baixar OG APK</a>
+        </div>
+
+        <div class="option">
+          <h3>OG (Script)</h3>
+          <p>Nosso próprio Script.</p>
+          <a class="button btn-ghost" href="https://www.mediafire.com/" target="_blank">Baixar Script</a>
+        </div>
+        
+        <div class="option">
+          <h3>Rio Rise (Site Oficial)</h3>
+          <p>Download do Rio Rise atualizado.</p>
+          <a class="button btn-ghost" href="https://riorise.com/pt" target="_blank">Baixar Rio Rise</a>
+        </div>
+      </div>
+
+      <!-- PC -->
+      <div id="pc-area" class="options hidden" aria-hidden="true">
+
+        <div class="option">
+          <h3>Tutorial de Instalação (Desatualizado)</h3>
+          <p>Assista o passo-a-passo para instalar corretamente.</p>
+          <a class="button btn-primary" href="https://youtu.be/p4fku5NeY9g" target="_blank">Ver Tutorial</a>
+        </div>
+
+        <div class="option">
+          <h3>Bluestacks 5 (Obrigatorio ser esse)</h3>
+          <p>Emulador compatível com o mod.</p>
+          <a class="button btn-primary" href="Bluestacks 5.exe" download>Baixar Bluestacks 5</a>
+        </div>
+
+        <div class="option">
+          <h3>Root no Bluestacks 5</h3>
+          <p>Guia de como aplicar root no emulador.</p>
+          <a class="button btn-primary" href="https://github.com/RobThePCGuy/Root-Bluestacks-with-Kitsune-Mask" target="_blank">Abrir Link</a>
+        </div>
+
+        <div class="option">
+          <h3>OG (APK)</h3>
+          <p>Nosso próprio executor do mod.</p>
+          <a class="button btn-primary" href="OG Script.apk" download>Baixar OG APK</a>
+        </div>
+
+        <div class="option">
+          <h3>OG (Script)</h3>
+          <p>Nosso próprio Script.</p>
+          <a class="button btn-ghost" href="https://www.mediafire.com/" target="_blank">Baixar Script</a>
+        </div>
+
+        <div class="option">
+          <h3>Rio Rise (Site Oficial)</h3>
+          <p>Download do Rio Rise atualizado.</p>
+          <a class="button btn-ghost" href="https://riorise.com/pt" target="_blank">Baixar Rio Rise</a>
+        </div>
+      </div>
+
+      <!-- AJUDA -->
+      <div id="ajuda-area" class="options hidden" aria-hidden="true">
+        <div class="option">
+          <h3>📺 Tutorial Atualizacao</h3>
+          <p>Aprenda a atualizar e execultar o mod.</p>
+          <a class="button btn-primary" href="https://youtu.be/6eoaF9Yw8kI" target="_blank">Ver Tutorial</a>
+        </div>
+
+        <div class="option">
+          <h3>💣 OG Script fechando sozinho?</h3>
+          <p>Veja o tutorial de como resolver abaixo.</p>
+          <a class="button btn-primary" href="https://youtube.com/shorts/k2_rL_IFyZ4?feature=shares" target="_blank">Ver Como Resolver</a>
+        </div>
+
+        <div class="option">
+          <h3>🎯 Auto Click (Recomendado)</h3>
+          <p>Veja o tutorial de como usar o auto click</p>
+          <a class="button btn-primary" href="" target="_blank">Ver Tutorial</a>
+          <a class="button btn-primary" href="https://play.google.com/store/apps/details?id=uit.quocnguyen.autoclickerlite" target="_blank">Download Auto Click</a>
+        </div>
+        
+      </div>
+
+      <p class="muted-note">Pré-selecionamos com base no seu dispositivo.</p>
+    </div>
+  </div>
+
+  <script>
+    const btnMobile = document.getElementById('btn-mobile');
+    const btnPc = document.getElementById('btn-pc');
+    const btnAjuda = document.getElementById('btn-ajuda');
+    const mobileArea = document.getElementById('mobile-area');
+    const pcArea = document.getElementById('pc-area');
+    const ajudaArea = document.getElementById('ajuda-area');
+    const segButtons = document.querySelectorAll('.seg-btn');
+
+    function activate(tab) {
+      segButtons.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+      [mobileArea, pcArea, ajudaArea].forEach(a => { a.classList.add('hidden'); a.setAttribute('aria-hidden', 'true'); });
+
+      if (tab === 'mobile') { btnMobile.classList.add('active'); mobileArea.classList.remove('hidden'); }
+      if (tab === 'pc') { btnPc.classList.add('active'); pcArea.classList.remove('hidden'); }
+      if (tab === 'ajuda') { btnAjuda.classList.add('active'); ajudaArea.classList.remove('hidden'); }
+    }
+
+    btnMobile.addEventListener('click', () => activate('mobile'));
+    btnPc.addEventListener('click', () => activate('pc'));
+    btnAjuda.addEventListener('click', () => activate('ajuda'));
+
+    function isMobileDevice() {
+      const ua = navigator.userAgent || navigator.vendor || window.opera;
+      return /android|iphone|ipad|ipod|windows phone|mobile/i.test(ua);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      if (isMobileDevice()) activate('mobile');
+      else activate('pc');
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === '1') activate('mobile');
+      if (e.key === '2') activate('pc');
+      if (e.key === '3') activate('ajuda');
+    });
+  </script>
+</body>
+</html>
